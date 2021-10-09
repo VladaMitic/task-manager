@@ -1,5 +1,4 @@
 const sgMail = require("@sendgrid/mail"); //requiruje s einstaliran sendgrid modul
-console.log(process.env.SENDGRID_API_KEY);
 sgMail.setApiKey(process.env.SENDGRID_API_KEY); // kopira se key nakon generisanja u setapu sendgrida u env varijablu a ovde se setuje  api key
 
 const sendWelcomeEmail = async (email, name) => {
@@ -11,7 +10,7 @@ const sendWelcomeEmail = async (email, name) => {
       text: `Welcome to task manager application ${name}.`,
     });
   } catch (error) {
-    throw Error('Cant send message'+ error);
+    throw Error("Cant send message" + error);
   }
 };
 

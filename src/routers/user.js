@@ -68,7 +68,7 @@ router.patch("/users/me", auth, async (req, res) => {
     return allowedUpdates.includes(update);
   });
   if (!isValidOperation) {
-    res.status(400).send({ error: "Invalid update" });
+    return res.status(400).send({ error: "Invalid update" });
   }
 
   try {
@@ -142,7 +142,7 @@ router.get("/users/:id/avatar", async (req, res) => {
 
 router.delete("/users/me", auth, async (req, res) => {
   try {
-    req.user.remove();
+    await req.user.remove();
     sendCancelationEmail(req.user.email, req.user.name);
     res.send(req.user);
   } catch (err) {

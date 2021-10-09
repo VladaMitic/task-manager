@@ -5,7 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js"
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "test": "env-cmd -f ./config/test.env jest --watch --runInBand"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "watchPathIgnorePatterns": [
+      "node_modules"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -22,6 +29,8 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0"
+    "env-cmd": "^10.1.0",
+    "jest": "^27.2.4",
+    "supertest": "^6.1.6"
   }
 }
